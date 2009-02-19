@@ -17,7 +17,7 @@ In the following example, the document root directory for the Moodle installatio
 1. Copy the software release directory to the Moodle install:
 
     % cd <software-path>/contrib
-    % cp -r spawar <moodle-path>/moodle
+    % cp -r qapi <moodle-path>/moodle
 
 2. Create the admin/report/qapi directory:
 
@@ -26,7 +26,7 @@ In the following example, the document root directory for the Moodle installatio
 
 3. Copy the index.php & version .php files & db & lang dirs  to qapi directory:
 
-    % cd <moodle-path>/moodle/spawar
+    % cd <moodle-path>/moodle/qapi
     % cp -r index.php version.php db lang ../admin/report/qapi
 
 4. Enable plugin as a Moodle administrative user:
