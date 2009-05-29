@@ -52,22 +52,34 @@ switch ($elements[0]) {
 case 'course':
     switch ($elements[1]) {
     case 'user':
-        include_once "user_course.inc";         // User_Course class
+        include_once "user_course.inc";         // get this user's courses
         $resource = new User_Course;
         break;
 
     case 'upcoming':
-        include_once "upcoming_course.inc";     // Upcoming_Course class
+        include_once "upcoming_course.inc";     // get upcoming courses
         $resource = new Upcoming_Course;
         break;
+
+    case 'instructors':
+        include_once "course_instructors.inc";  // get this course's instructors
+        $resource = new Course_Instructors;
+        break;
+
+    default:
+        $resource = new Error_Msg_Course;
     }
     break;
 
-case 'event':
+case 'userlist':
+        include_once 'user_list.inc';           // get users, optionally by auth
+        $resource = new User_List;
     break;
 
 case 'debug':
     break;
+default:
+    $resource = new Error_Msg_Course;
 }
 
 $output = $resource->lookup($elements);
@@ -85,6 +97,14 @@ if (0) {
 
 print json_encode($output);
 exit;
+
+class Error_Msg_Course {
+    function lookup($elements) {
+        $elements['error'] = 'unrecognized course request';
+        return $elements;
+        return array('error' => 'unrecognized course request');
+    }
+}
 
 /**
  * validate a remote IP as a trusted site.

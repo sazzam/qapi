@@ -25,6 +25,7 @@ SELECT
     c.shortname,
     c.summary,
     from_unixtime(c.startdate, '%Y-%m-%d') as startdate,
+    c.timemodified,
     c.numsections,
     c.format
 FROM {$CFG->prefix}course c
@@ -45,6 +46,7 @@ END;
                                 'summary' => $course->summary,
                                 'urlpath' => '/course/view.php?id=' . $cid,
                                 'startdate' => $course->startdate,
+                                'timemodified' => $course->timemodified,
                             );
         }
         return $output;

@@ -20,7 +20,7 @@ class User_Course implements Rest_Resource {
 
         // clean name to match Moodle OpenID scheme for usernames in database.
         // from moodle/auth/openid/lib.php, openid_normalize_url_as_username():
-        // only needed if username is an openid url.  sometimes it is, sometimes it isn't.  don't exactly why, yet.
+        // only needed if username is an openid url.  sometimes it is, sometimes it isn't.
         if (substr($username, 0, 4) == 'http') {
             $username = eregi_replace('[^a-z0-9]', '', $username);
             $username = substr($username, 0, 90); // Keep it within limits of schema
