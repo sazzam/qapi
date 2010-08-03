@@ -16,6 +16,8 @@ class User_Course implements Rest_Resource {
     }
 
     public function lookup($elems) {
+        global $CFG;                        // yuck!  Moodle! todo
+
         $username = urldecode($elems[2]);  // todo  avoid SQL injection but allow all possible legal OpenIDs and/or Drupal usernames?
 
         // clean name to match Moodle OpenID scheme for usernames in database.
